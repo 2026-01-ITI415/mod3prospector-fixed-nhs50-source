@@ -27,5 +27,8 @@ public class CardProspector : Card
         Prospector.CARD_CLICKED(this);
         base.OnMouseUpAsButton();// b
     }
-
+    public bool IsBlocked()
+    {
+        return hiddenBy.Count > 0;
+    }
 }

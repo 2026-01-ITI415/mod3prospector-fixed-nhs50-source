@@ -302,6 +302,17 @@ public class Prospector : MonoBehaviour
                 // If the card is face-down, it’s not valid
                 if (!cp.faceUp) validMatch = false;
 
+                foreach (int coverID in cp.layoutSlot.hiddenBy)
+                {
+                    CardProspector coverCP = S.mineIdToCardDict[coverID];
+
+                    if (coverCP != null && coverCP.state == eCardState.mine)
+                    {
+                        validMatch = false;
+                        break;
+                    }
+                }
+
                 // If it’s not an adjacent rank, it’s not valid
                 if (!cp.AdjacentTo(S.target)) validMatch = false;            // b
 
